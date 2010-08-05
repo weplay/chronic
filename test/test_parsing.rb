@@ -174,10 +174,10 @@ class TestParsing < Test::Unit::TestCase
 
     # rm_sd_rt
 
-    #time = parse_now("jan 5 13:00")
-    #assert_equal Time.local(2007, 1, 5, 13), time
-
     # old dates
+
+    time = parse_now("jan 5 13:00")
+    assert_equal Time.local(2007, 1, 5, 13), time
 
     time = parse_now("may 40")
     assert_equal Time.local(40, 5, 16, 12, 0, 0), time
