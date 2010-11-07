@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
 
   s.name              = 'chronic'
   s.version           = '0.3.0'
-  s.date              = '2010-10-22'
+  s.date              = '2010-11-07'
   s.rubyforge_project = 'chronic'
 
   s.summary     = "Natural language date/time parsing."
