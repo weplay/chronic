@@ -642,8 +642,12 @@ class TestParsing < Test::Unit::TestCase
   end
   
   def test_am_pm_on_daylight_savings_end_date
-    assert_equal Time.local(2010, 11, 7, 11, 34), Chronic.parse('11:34 AM', {:now => Time.local(2010, 11, 7, 11, 0) })
-    assert_equal Time.local(2010, 11, 7, 23, 34), Chronic.parse('11:34 PM', {:now => Time.local(2010, 11, 7, 11, 0) })
+    assert_equal Time.local(2010, 11, 7, 10, 30), Chronic.parse('10:30 AM', {:now => Time.local(2010, 11, 7, 11, 0) })
+    assert_equal Time.local(2010, 11, 7, 22, 30), Chronic.parse('10:30 PM', {:now => Time.local(2010, 11, 7, 11, 0) })
+    
+    # Now check the danger zone between 11AM and 12PM and 11PM and 12AM
+    assert_equal Time.local(2010, 11, 7, 11, 30), Chronic.parse('11:30 AM', {:now => Time.local(2010, 11, 7, 11, 0) })
+    assert_equal Time.local(2010, 11, 7, 23, 30), Chronic.parse('11:30 PM', {:now => Time.local(2010, 11, 7, 11, 0) })
   end
 
   def test_a_p
