@@ -640,6 +640,11 @@ class TestParsing < Test::Unit::TestCase
     assert_equal Time.local(2006, 8, 16), parse_now("8/16/2006 at 12am")
     assert_equal Time.local(2006, 8, 16, 12), parse_now("8/16/2006 at 12pm")
   end
+  
+  def test_am_pm_on_daylight_savings_end_date
+    assert_equal Time.local(2010, 11, 7, 11, 34), Chronic.parse('11:34 AM', {:now => Time.local(2010, 11, 7, 11, 0) })
+    assert_equal Time.local(2010, 11, 7, 23, 34), Chronic.parse('11:34 PM', {:now => Time.local(2010, 11, 7, 11, 0) })
+  end
 
   def test_a_p
     assert_equal Time.local(2006, 8, 16, 0, 15), parse_now("8/16/2006 at 12:15a")
